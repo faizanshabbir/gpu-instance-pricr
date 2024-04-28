@@ -21,7 +21,7 @@ export type AwsInstance = {
   instance_storage: string
 }
 
-export const columns: ColumnDef<AwsInstance>[] = [
+export const awscolumns: ColumnDef<AwsInstance>[] = [
   {
     accessorKey: "instance_name",
     header: "Instance Name",
@@ -47,14 +47,6 @@ export const columns: ColumnDef<AwsInstance>[] = [
     header: "Instance Memory (GB)",
   },
   {
-    accessorKey: "network_bandwidth",
-    header: "Network Bandwidth",
-  },
-  {
-    accessorKey: "ebs_bandwidth_gbps",
-    header: "EBS Bandwidth (Gbps)",
-  },
-  {
     accessorKey: "on_demand_price_hr",
     header: "On-Demand Price/Hr",
   },
@@ -69,5 +61,13 @@ export const columns: ColumnDef<AwsInstance>[] = [
   {
     accessorKey: "instance_storage",
     header: "Instance Storage",
+  },
+  {
+    accessorKey: "network_bandwidth",
+    header: "Network Bandwidth",
+  },
+  {
+    accessorKey: "ebs_bandwidth_gbps",
+    header: "EBS Bandwidth (Gbps)",
   },
 ]
