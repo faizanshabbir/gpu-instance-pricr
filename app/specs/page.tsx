@@ -27,11 +27,15 @@ async function getAzureData(): Promise<AzureInstance[]> {
 
 export default async function InstanceSpecsPage() {
   const awsdata = await getAwsData()
-  const azuredata = await getAwsData()
+  const azuredata = await getAzureData()
   return (
-    <div className="container mx-auto py-10">
-      <DataTable columns={awscolumns} data={awsdata} />
-      <DataTable columns={azurecolumns} data={azuredata} />
+    <div>
+      <div className="container mx-auto py-10">
+        <DataTable title="AWS Instances" columns={awscolumns} data={awsdata} />
+      </div>
+      <div className="container mx-auto py-10">
+        <DataTable title="Azure Instances" columns={azurecolumns} data={azuredata} />
+      </div>
     </div>
   )
 }

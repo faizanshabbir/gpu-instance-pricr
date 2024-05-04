@@ -7,7 +7,7 @@ import { ColumnDef } from "@tanstack/react-table"
 
 export type AzureInstance = {
   instance_name: string
-  gpu: string
+  gpu_name: string
   gpu_memory_gb: string
   num_gpus: string
   peer_to_peer: string
@@ -30,7 +30,7 @@ export const azurecolumns: ColumnDef<AzureInstance>[] = [
     header: "Instance Name",
   },
   {
-    accessorKey: "gpu",
+    accessorKey: "gpu_name",
     header: "GPU",
   },
   {
