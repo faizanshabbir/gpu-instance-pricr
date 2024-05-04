@@ -1,11 +1,11 @@
 import Image from "next/image";
-import DemoPage from "./payments/page";
+import InstanceSpecsPage from "./specs/page";
 
 export default function Home() {
   return (
     <main>
       <div>
-        <DemoPage/>
+        <InstanceSpecsPage/>
       </div>
     </main>
   );

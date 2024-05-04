@@ -5,29 +5,32 @@ import { ColumnDef } from "@tanstack/react-table"
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
 
-export type AwsInstance = {
+export type AzureInstance = {
   instance_name: string
-  gpu: string
+  gpu_name: string
   gpu_memory_gb: string
   num_gpus: string
   peer_to_peer: string
   vcpus: string
   instance_memory_gb: string
-  network_bandwidth: string
-  ebs_bandwidth_gbps: string
+  temp_storage_ssd_gb: string
+  max_data_discs: string
+  max_nics_bandwidth: string
+  disk_throughput_iops_mbps: string
   on_demand_price_hr: string
   one_yr_reserved_price_hr: string
   three_yr_reserved_price_hr: string
-  instance_storage: string
+  disk_nvme: string
+  os: string
 }
 
-export const columns: ColumnDef<AwsInstance>[] = [
+export const azurecolumns: ColumnDef<AzureInstance>[] = [
   {
     accessorKey: "instance_name",
     header: "Instance Name",
   },
   {
-    accessorKey: "gpu",
+    accessorKey: "gpu_name",
     header: "GPU",
   },
   {
@@ -47,14 +50,6 @@ export const columns: ColumnDef<AwsInstance>[] = [
     header: "Instance Memory (GB)",
   },
   {
-    accessorKey: "network_bandwidth",
-    header: "Network Bandwidth",
-  },
-  {
-    accessorKey: "ebs_bandwidth_gbps",
-    header: "EBS Bandwidth (Gbps)",
-  },
-  {
     accessorKey: "on_demand_price_hr",
     header: "On-Demand Price/Hr",
   },
@@ -67,7 +62,19 @@ export const columns: ColumnDef<AwsInstance>[] = [
     header: "3 Yr Reserved Price/Hr",
   },
   {
-    accessorKey: "instance_storage",
+    accessorKey: "max_nics_bandwidth",
+    header: "Max NICs / Bandwidth",
+  },
+  {
+    accessorKey: "disk_throughput_iops_mbps",
+    header: "Max uncached disk throughput: IOPS/MBps",
+  },
+  {
+    accessorKey: "temp_storage_ssd_gb",
     header: "Instance Storage",
+  },
+  {
+    accessorKey: "disk_nvme",
+    header: "NVME Direct Disk",
   },
 ]
