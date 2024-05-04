@@ -28,7 +28,6 @@ async function getAzureData(): Promise<AzureInstance[]> {
 export default async function InstanceSpecsPage() {
   const awsdata = await getAwsData()
   const azuredata = await getAwsData()
-  console.log(data)
   return (
     <div className="container mx-auto py-10">
       <DataTable columns={awscolumns} data={awsdata} />
