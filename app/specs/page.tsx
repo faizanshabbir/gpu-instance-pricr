@@ -20,7 +20,7 @@ async function getAwsData(): Promise<AwsInstance[]> {
 
 async function getAzureData(): Promise<AzureInstance[]> {
   // Fetch data from your API here.
-  const response = await fetch("https://sheetdb.io/api/v1/nl5lyk7jf10lm", { next: { revalidate: 5 } });
+  const response = await fetch("https://sheetdb.io/api/v1/nl5lyk7jf10lm", { next: { revalidate: 1800 } });
   const data = await response.json();
   return data;
 }

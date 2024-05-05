@@ -7,18 +7,23 @@ import { ColumnDef } from "@tanstack/react-table"
 
 export type AwsInstance = {
   instance_name: string
-  gpu: string
-  gpu_memory_gb: string
-  num_gpus: string
+  gpu_name: string
+  gpu_memory_gb: number
+  num_gpus: number
   peer_to_peer: string
-  vcpus: string
-  instance_memory_gb: string
+  vcpus: number
+  instance_memory_gb: number
   network_bandwidth: string
   ebs_bandwidth_gbps: string
-  on_demand_price_hr: string
-  one_yr_reserved_price_hr: string
-  three_yr_reserved_price_hr: string
+  on_demand_price_hr: number
+  one_yr_reserved_price_hr: number
+  three_yr_reserved_price_hr: number
   instance_storage: string
+}
+
+function filterByNumericalValue(row: any, columnId: any, filterValue: any) {
+  const value = row.getValue(columnId);
+  return value !== null && value >= parseInt(filterValue) ? true : false;
 }
 
 export const awscolumns: ColumnDef<AwsInstance>[] = [
@@ -27,24 +32,28 @@ export const awscolumns: ColumnDef<AwsInstance>[] = [
     header: "Instance Name",
   },
   {
-    accessorKey: "gpu",
+    accessorKey: "gpu_name",
     header: "GPU",
   },
   {
     accessorKey: "gpu_memory_gb",
     header: "GPU Memory (GB)",
+    filterFn: filterByNumericalValue,
   },
   {
     accessorKey: "num_gpus",
     header: "Number of GPUs",
+    filterFn: filterByNumericalValue,
   },
   {
     accessorKey: "vcpus",
     header: "vCPUs",
+    filterFn: filterByNumericalValue,
   },
   {
     accessorKey: "instance_memory_gb",
     header: "Instance Memory (GB)",
+    filterFn: filterByNumericalValue,
   },
   {
     accessorKey: "on_demand_price_hr",

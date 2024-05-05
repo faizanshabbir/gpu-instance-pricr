@@ -8,20 +8,25 @@ import { ColumnDef } from "@tanstack/react-table"
 export type AzureInstance = {
   instance_name: string
   gpu_name: string
-  gpu_memory_gb: string
-  num_gpus: string
+  gpu_memory_gb: number
+  num_gpus: number
   peer_to_peer: string
-  vcpus: string
-  instance_memory_gb: string
-  temp_storage_ssd_gb: string
-  max_data_discs: string
+  vcpus: number
+  instance_memory_gb: number
+  temp_storage_ssd_gb: number
+  max_data_discs: number
   max_nics_bandwidth: string
   disk_throughput_iops_mbps: string
-  on_demand_price_hr: string
-  one_yr_reserved_price_hr: string
-  three_yr_reserved_price_hr: string
+  on_demand_price_hr: number
+  one_yr_reserved_price_hr: number
+  three_yr_reserved_price_hr: number
   disk_nvme: string
   os: string
+}
+
+function filterByNumericalValue(row: any, columnId: any, filterValue: any) {
+  const value = row.getValue(columnId);
+  return value !== null && value >= parseInt(filterValue) ? true : false;
 }
 
 export const azurecolumns: ColumnDef<AzureInstance>[] = [
@@ -36,18 +41,22 @@ export const azurecolumns: ColumnDef<AzureInstance>[] = [
   {
     accessorKey: "gpu_memory_gb",
     header: "GPU Memory (GB)",
+    filterFn: filterByNumericalValue,
   },
   {
     accessorKey: "num_gpus",
     header: "Number of GPUs",
+    filterFn: filterByNumericalValue,
   },
   {
     accessorKey: "vcpus",
     header: "vCPUs",
+    filterFn: filterByNumericalValue,
   },
   {
     accessorKey: "instance_memory_gb",
     header: "Instance Memory (GB)",
+    filterFn: filterByNumericalValue,
   },
   {
     accessorKey: "on_demand_price_hr",
