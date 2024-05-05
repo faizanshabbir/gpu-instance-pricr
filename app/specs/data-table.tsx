@@ -46,18 +46,17 @@ export function DataTable<TData, TValue>({
     }
   })
 
+  const filterColumns = [
+    "gpu_name",
+    "instance_name",
+    "gpu_memory_gb",
+    "instance_memory_gb",
+    "num_gpus",
+    "vcpus",
+  ]
+
   return (
     <div>
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter gpus..."
-          value={(table.getColumn("gpu_name")?.getFilterValue() as string) ?? ""}
-          onChange={(event) =>
-            table.getColumn("gpu_name")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
-      </div>
       <div className="rounded-md border">
         <Table>
           <TableHeader>
@@ -72,6 +71,15 @@ export function DataTable<TData, TValue>({
                             header.column.columnDef.header,
                             header.getContext()
                           )}
+                      {filterColumns.includes(header.column.id) ? (
+                        <Input className="max-w-sm"
+                          placeholder={`Filter`}
+                          value={(header.column.getFilterValue() as string) ?? ""}
+                          onChange={(event) =>
+                            header.column.setFilterValue(event.target.value)
+                          }
+                        />
+                      ) : null}
                     </TableHead>
                   )
                 })}
