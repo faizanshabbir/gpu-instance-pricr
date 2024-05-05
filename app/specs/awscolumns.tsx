@@ -21,8 +21,8 @@ export type AwsInstance = {
   instance_storage: string
 }
 
-function filterByNumericalValue(row, columnId, filterValue) {
-  const value = row.getValue<number | null>(columnId);
+function filterByNumericalValue(row: any, columnId: any, filterValue: any) {
+  const value = row.getValue(columnId);
   return value !== null && value >= parseInt(filterValue) ? true : false;
 }
 
