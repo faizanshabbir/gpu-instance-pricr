@@ -4,9 +4,7 @@ import InstanceSpecsPage from "./specs/page";
 export default function Home() {
   return (
     <main>
-      <div>
-        <InstanceSpecsPage/>
-      </div>
+      <InstanceSpecsPage/>
     </main>
   );
 }

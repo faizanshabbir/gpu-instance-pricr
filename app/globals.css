@@ -74,3 +74,13 @@
       @apply bg-background text-foreground;
     }
   }
+
+  @layer base {
+    .table-head {
+      width: 75px; /* Adjust this value to your needs */
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+  
+  }
