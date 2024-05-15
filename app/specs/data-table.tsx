@@ -1,6 +1,6 @@
-"use client"
 
 import * as React from "react"
+import { useEffect } from 'react';
 
 import {
   ColumnDef,
@@ -24,27 +24,30 @@ import { Input } from "@/components/ui/input"
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  data: TData[],
+  externalFilter: { [key: string]: string },
 }
 
 export function DataTable<TData, TValue>({
-  columns,
-  data,
-}: DataTableProps<TData, TValue>) {
-  const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
-    []
-  )
+    columns,
+    data,
+    externalFilter,
+  }: DataTableProps<TData, TValue>
+) {
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
-    state: {
-      columnFilters,
-    }
   })
+  
+  useEffect(() => {
+    table.getColumn("gpu_name")?.setFilterValue(externalFilter.gpu_name)
+    table.getColumn("gpu_memory_gb")?.setFilterValue(parseInt(externalFilter.gpu_memory) || undefined)
+    table.getColumn("instance_memory_gb")?.setFilterValue(parseInt(externalFilter.instance_memory) || undefined)
+    table.getColumn("vcpus")?.setFilterValue(parseInt(externalFilter.vcpus) || undefined)
+  }, [externalFilter]);
 
   const filterColumns = [
     "gpu_name",

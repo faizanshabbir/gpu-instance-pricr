@@ -1,21 +1,13 @@
-import { AwsInstance, awscolumns } from "./awscolumns"
-import { AzureInstance, azurecolumns } from "./azurecolumns"
-import { DataTable } from "./data-table"
+import React from 'react';
+import { AwsInstance } from "./awscolumns"
+import { AzureInstance } from "./azurecolumns"
+import { InstanceSpecsWrapper } from "./wrapped-tables"
 
 async function getAwsData(): Promise<AwsInstance[]> {
   // Fetch data from your API here.
   const response = await fetch("https://sheetdb.io/api/v1/ddtqulvvu5lba", { next: { revalidate: 1800 } });
   const data = await response.json();
   return data;
-  // return [
-  //   {
-  //     id: "728ed52f",
-  //     amount: 100,
-  //     status: "pending",
-  //     email: "m@example.com",
-  //   },
-  //   // ...
-  // ]
 }
 
 async function getAzureData(): Promise<AzureInstance[]> {
@@ -30,11 +22,11 @@ export default async function InstanceSpecsPage() {
   const azuredata = await getAzureData()
   return (
     <div>
-      <div className="container mx-auto py-10">
-        <DataTable columns={awscolumns} data={awsdata} />
+      <div>
+        <InstanceSpecsWrapper awsData={awsdata} azureData={azuredata} />
       </div>
-      <div className="container mx-auto py-10">
-        <DataTable columns={azurecolumns} data={azuredata} />
+      <div className="container mx-auto pb-5 text-center">
+        <a href="mailto:gpuinstancessup@gmail.com">Suggestions or see something wrong? Reach out to us here</a>
       </div>
     </div>
   )
