@@ -4,8 +4,9 @@ import NavigationPage from "./nav/navigation";
 
 export default function Home() {
   return (
-    <main>
+    <div>
+      {/* <NavigationPage/> */}
       <InstanceSpecsPage/>
-    </main>
+    </div>
   );
 }
