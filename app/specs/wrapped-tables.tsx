@@ -17,7 +17,7 @@ export function InstanceSpecsWrapper({awsData, azureData}: InstanceSpecsWrapperP
     const [vcpuFilter, setVcpuFilter] = useState('')
     const [instanceMemoryFilter, setInstanceMemoryFilter] = useState('');
     return (
-        <div>
+        <div className="container mx-auto">
             <div className="container mx-auto pt-5">
                 <div> 
                     <h2 className="font-bold">Global Filters</h2>

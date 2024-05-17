@@ -21,10 +21,8 @@ export default async function InstanceSpecsPage() {
   const awsdata = await getAwsData()
   const azuredata = await getAzureData()
   return (
-    <div>
-      <div>
-        <InstanceSpecsWrapper awsData={awsdata} azureData={azuredata} />
-      </div>
+    <div className="container mx-auto">
+      <InstanceSpecsWrapper awsData={awsdata} azureData={azuredata} />
       <div className="container mx-auto pb-5 text-center">
         <a href="mailto:gpuinstancessup@gmail.com">Suggestions or see something wrong? Reach out to us here</a>
       </div>

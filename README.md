@@ -36,10 +36,4 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 # gpu-instance-pricr
 
-Add column filters to instance_name?, gpu_name, memory (>= filter), cpus (>= filter), bandwidth?
-For column filter, can we try moving into column header rather than above table?
-Add filters that work across both tables??? => Ask cursor
-    gpu_name, memory (>= filter), cpus (>= filter)
-Refactor two tables into one?? => Ask cursor
-Add table heading to data table
-Column visibility filters? => Maybe mark some columns off by default . . . 
+Navigation Page?
